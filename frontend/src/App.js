@@ -1,9 +1,16 @@
+import { Route ,Routes ,BrowserRouter} from "react-router-dom"
+import Profile from "./components/Profile"
+import Login from "./components/Login"
+
 function App() {
   return (
     <div className="App">
-        <p>
-          Hello World
-        </p>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Login />} path="/" exact/>
+            <Route element={<Profile />} path="/profile" />
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
