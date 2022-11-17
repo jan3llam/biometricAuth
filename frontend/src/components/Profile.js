@@ -1,8 +1,32 @@
-//import { useCurrentUser } from "../hooks/useCurrentUser";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 import { Link } from "react-router-dom";
 
 export default function Profile() {
 
-	return <p>Profile</p>;
+	const { isLoading , isAuthorized , username } = useCurrentUser();
+
+	function sendRequest (){
+		
+		
+	}
+
+	if (isLoading) return null;
+
+  	if (!isAuthorized) {
+	    return (
+	      <p>
+	        You must <Link to="/">login</Link> to view this page!
+	      </p>
+	   		 );
+		}
+
+	return (
+    <div>
+      <p>
+        You are signed in as <strong>{username}</strong>
+      </p>
+      <button onClick={sendRequest}>Send Request To Backend</button>
+    </div>
+  );
 
 }
