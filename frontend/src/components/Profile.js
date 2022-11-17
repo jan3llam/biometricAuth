@@ -6,9 +6,12 @@ export default function Profile() {
 	const { isLoading , isAuthorized , username } = useCurrentUser();
 
 	function sendRequest (){
-		
-		
+		fetch("/get-user-info")
+			.then((res) => res.json())
+			.then((data) => console.log(data));
+			
 	}
+
 
 	if (isLoading) return null;
 
